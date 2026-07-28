@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" width="800" height="520" style="display:block">
+  <defs>
+    <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1a2233" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#1a2233" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <style>
+    :root { }
+
+    /* ---- body walk-in / jump timelines (direction differs, everything else shared) ---- */
+    @keyframes fox-move {
+      0%   { transform: translate(-320px,0px); opacity: 0; }
+      4%   { transform: translate(-320px,0px); opacity: 1; }
+      8%   { transform: translate(-260px,-8px); }
+      12%  { transform: translate(-200px,0px); }
+      16%  { transform: translate(-150px,-8px); }
+      20%  { transform: translate(-105px,0px); }
+      24%  { transform: translate(-65px,-8px); }
+      28%  { transform: translate(-30px,0px); }
+      32%  { transform: translate(-8px,-8px); }
+      36%  { transform: translate(0px,0px); }
+      58%  { transform: translate(0px,0px); }
+      63%  { transform: translate(0px,-50px); }
+      68%  { transform: translate(0px,0px); }
+      73%  { transform: translate(0px,-42px); }
+      78%  { transform: translate(0px,0px); }
+      82%  { transform: translate(0px,-18px); }
+      86%  { transform: translate(0px,0px); }
+      92%  { transform: translate(0px,0px); opacity: 1; }
+      97%  { transform: translate(0px,0px); opacity: 0; }
+      98%  { transform: translate(-320px,0px); opacity: 0; }
+      100% { transform: translate(-320px,0px); opacity: 0; }
+    }
+    @keyframes bear-move {
+      0%   { transform: translate(320px,0px); opacity: 0; }
+      4%   { transform: translate(320px,0px); opacity: 1; }
+      8%   { transform: translate(260px,-8px); }
+      12%  { transform: translate(200px,0px); }
+      16%  { transform: translate(150px,-8px); }
+      20%  { transform: translate(105px,0px); }
+      24%  { transform: translate(65px,-8px); }
+      28%  { transform: translate(30px,0px); }
+      32%  { transform: translate(8px,-8px); }
+      36%  { transform: translate(0px,0px); }
+      58%  { transform: translate(0px,0px); }
+      63%  { transform: translate(0px,-50px); }
+      68%  { transform: translate(0px,0px); }
+      73%  { transform: translate(0px,-42px); }
+      78%  { transform: translate(0px,0px); }
+      82%  { transform: translate(0px,-18px); }
+      86%  { transform: translate(0px,0px); }
+      92%  { transform: translate(0px,0px); opacity: 1; }
+      97%  { transform: translate(0px,0px); opacity: 0; }
+      98%  { transform: translate(320px,0px); opacity: 0; }
+      100% { transform: translate(320px,0px); opacity: 0; }
+    }
+    @keyframes fox-shadow-move {
+      0%   { transform: translate(-320px,0px) scale(1); opacity: 0; }
+      4%   { transform: translate(-320px,0px) scale(1); opacity: 0.9; }
+      36%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      58%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      63%  { transform: translate(0px,0px) scale(0.6); opacity: 0.4; }
+      68%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      73%  { transform: translate(0px,0px) scale(0.62); opacity: 0.45; }
+      78%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      82%  { transform: translate(0px,0px) scale(0.82); opacity: 0.7; }
+      86%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      92%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      97%  { transform: translate(0px,0px) scale(1); opacity: 0; }
+      98%  { transform: translate(-320px,0px) scale(1); opacity: 0; }
+      100% { transform: translate(-320px,0px) scale(1); opacity: 0; }
+    }
+    @keyframes bear-shadow-move {
+      0%   { transform: translate(320px,0px) scale(1); opacity: 0; }
+      4%   { transform: translate(320px,0px) scale(1); opacity: 0.9; }
+      36%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      58%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      63%  { transform: translate(0px,0px) scale(0.6); opacity: 0.4; }
+      68%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      73%  { transform: translate(0px,0px) scale(0.62); opacity: 0.45; }
+      78%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      82%  { transform: translate(0px,0px) scale(0.82); opacity: 0.7; }
+      86%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      92%  { transform: translate(0px,0px) scale(1); opacity: 0.9; }
+      97%  { transform: translate(0px,0px) scale(1); opacity: 0; }
+      98%  { transform: translate(320px,0px) scale(1); opacity: 0; }
+      100% { transform: translate(320px,0px) scale(1); opacity: 0; }
+    }
+
+    /* ---- shared arm-pose crossfades (identical timing for both characters) ---- */
+    @keyframes side-arm-fade {
+      0%   { opacity: 1; }
+      34%  { opacity: 1; }
+      39%  { opacity: 0; }
+      96%  { opacity: 0; }
+      99%  { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    @keyframes reach-arm-fade {
+      0%,36%  { opacity: 0; transform: translate(0,0); }
+      40%     { opacity: 1; transform: translate(0,0); }
+      42%     { transform: translate(0,-5px); }
+      44%     { transform: translate(0,3px); }
+      46%     { transform: translate(0,-5px); }
+      48%     { transform: translate(0,3px); }
+      51%     { transform: translate(0,0); }
+      53%     { opacity: 1; transform: translate(0,0); }
+      57%     { opacity: 0; }
+      100%    { opacity: 0; }
+    }
+    @keyframes raise-arm-fade {
+      0%,55%  { opacity: 0; }
+      59%     { opacity: 1; }
+      88%     { opacity: 1; }
+      92%     { opacity: 0; }
+      100%    { opacity: 0; }
+    }
+
+    .fox-move   { animation: fox-move 8s infinite linear; transform-box: fill-box; }
+    .bear-move  { animation: bear-move 8s infinite linear; transform-box: fill-box; }
+    .fox-shadow  { animation: fox-shadow-move 8s infinite linear; transform-box: fill-box; transform-origin: center; }
+    .bear-shadow { animation: bear-shadow-move 8s infinite linear; transform-box: fill-box; transform-origin: center; }
+    .side-arm   { animation: side-arm-fade 8s infinite linear; }
+    .reach-arm  { animation: reach-arm-fade 8s infinite linear; transform-box: fill-box; }
+    .raise-arm  { animation: raise-arm-fade 8s infinite linear; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fox-move, .bear-move { animation: none; transform: translate(0,0); opacity: 1; }
+      .fox-shadow, .bear-shadow { animation: none; transform: translate(0,0) scale(1); opacity: 0.9; }
+      .side-arm { animation: none; opacity: 0; }
+      .reach-arm { animation: none; opacity: 1; transform: translate(0,0); }
+      .raise-arm { animation: none; opacity: 0; }
+    }
+  </style>
+
+  <!-- ground shadows -->
+  <ellipse class="fox-shadow" cx="230" cy="472" rx="95" ry="16" fill="url(#shadow)"/>
+  <ellipse class="bear-shadow" cx="570" cy="472" rx="95" ry="16" fill="url(#shadow)"/>
+
+  <!-- ================= FOX (left) ================= -->
+  <g class="fox-move">
+    <!-- tail -->
+    <path d="M172,306 C104,290 68,324 80,362 C88,388 122,390 130,366 C112,358 106,332 134,312 Z" fill="#ED8C3E"/>
+    <path d="M84,364 C81,378 100,388 116,382 C107,375 101,365 106,354 Z" fill="#FBF4EC"/>
+
+    <!-- back arm holding flask (always present) -->
+    <path d="M178,300 C150,320 140,345 148,382 C148,392 172,394 174,382 C170,358 178,335 196,312 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+    <circle cx="150" cy="388" r="15" fill="#ED8C3E"/>
+    <path d="M141,345 L141,362 L128,392 C124,400 130,406 139,406 L161,406 C170,406 176,400 172,392 L159,362 L159,345 Z" fill="#EAF6F6" stroke="#B9C7C7" stroke-width="2"/>
+    <path d="M132,388 L168,388 L172,392 C176,400 170,406 161,406 L139,406 C130,406 124,400 128,392 Z" fill="#7FD1C6"/>
+    <rect x="137" y="338" width="26" height="8" rx="2" fill="#DCE7E7"/>
+
+    <!-- legs -->
+    <rect x="205" y="398" width="26" height="66" rx="10" fill="#D9C79E"/>
+    <rect x="243" y="398" width="26" height="66" rx="10" fill="#D9C79E"/>
+    <ellipse cx="216" cy="466" rx="17" ry="9" fill="#6B4A33"/>
+    <ellipse cx="256" cy="466" rx="17" ry="9" fill="#6B4A33"/>
+
+    <!-- coat body -->
+    <rect x="170" y="288" width="120" height="112" rx="34" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+    <path d="M230,288 L230,340 L206,300 Z" fill="#EDF0F4"/>
+    <path d="M230,288 L230,340 L254,300 Z" fill="#F5F7F9"/>
+    <circle cx="230" cy="330" r="3.2" fill="#BFC7D1"/>
+    <circle cx="230" cy="352" r="3.2" fill="#BFC7D1"/>
+    <circle cx="230" cy="374" r="3.2" fill="#BFC7D1"/>
+    <rect x="254" y="308" width="20" height="15" rx="2" fill="none" stroke="#D9DEE6" stroke-width="2"/>
+    <line x1="266" y1="303" x2="271" y2="316" stroke="#ED8C3E" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- forward-arm poses (crossfade): relaxed / reaching-for-handshake / raised-for-joy -->
+    <g class="side-arm">
+      <path d="M283,296 C312,312 322,340 313,378 C311,390 288,392 286,380 C292,356 286,332 268,312 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="290" cy="384" r="16" fill="#ED8C3E"/>
+    </g>
+    <g class="reach-arm">
+      <path d="M283,296 C330,300 372,315 398,338 C406,346 392,362 383,356 C360,338 328,322 278,316 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="393" cy="347" r="18" fill="#ED8C3E" stroke="#D97F2E" stroke-width="1.5"/>
+    </g>
+    <g class="raise-arm">
+      <path d="M283,298 C300,270 300,220 290,175 C288,165 268,168 268,180 C276,222 276,264 262,290 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="284" cy="168" r="17" fill="#ED8C3E"/>
+    </g>
+
+    <!-- head -->
+    <path d="M186,197 L166,129 L218,185 Z" fill="#ED8C3E"/>
+    <path d="M191,187 L180,149 L210,179 Z" fill="#FBD3A6"/>
+    <path d="M274,197 L294,129 L242,185 Z" fill="#ED8C3E"/>
+    <path d="M269,187 L280,149 L250,179 Z" fill="#FBD3A6"/>
+    <circle cx="230" cy="235" r="58" fill="#ED8C3E"/>
+    <path d="M215,290 C222,300 238,300 245,290 L240,304 L220,304 Z" fill="#FFF8EE"/>
+    <ellipse cx="230" cy="257" rx="37" ry="28" fill="#FFF8EE"/>
+    <ellipse cx="230" cy="241" rx="7" ry="6" fill="#3B2A22"/>
+    <path d="M230,244 L230,259" stroke="#3B2A22" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M210,265 C218,273 242,273 250,265" fill="none" stroke="#3B2A22" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="207" cy="226" rx="12" ry="14" fill="#FFFFFF"/>
+    <ellipse cx="253" cy="226" rx="12" ry="14" fill="#FFFFFF"/>
+    <circle cx="209" cy="229" r="5.5" fill="#2B2118"/>
+    <circle cx="255" cy="229" r="5.5" fill="#2B2118"/>
+    <circle cx="207" cy="225" r="1.6" fill="#FFFFFF"/>
+    <circle cx="253" cy="225" r="1.6" fill="#FFFFFF"/>
+    <ellipse cx="196" cy="247" rx="9" ry="5" fill="#FBC7A6" opacity="0.7"/>
+    <ellipse cx="264" cy="247" rx="9" ry="5" fill="#FBC7A6" opacity="0.7"/>
+
+    <!-- joyful face overlay (fades in only during the jump) -->
+    <g class="raise-arm">
+      <ellipse cx="207" cy="226" rx="13" ry="15" fill="#ED8C3E"/>
+      <ellipse cx="253" cy="226" rx="13" ry="15" fill="#ED8C3E"/>
+      <path d="M197,229 Q207,213 217,229" stroke="#2B2118" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M243,229 Q253,213 263,229" stroke="#2B2118" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M202,262 C212,280 248,280 258,262" fill="none" stroke="#3B2A22" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- ================= BEAR (right, mirrored composition) ================= -->
+  <g class="bear-move">
+    <!-- back arm holding clipboard (always present) -->
+    <path d="M622,300 C650,320 660,345 652,382 C652,392 628,394 626,382 C630,358 622,335 604,312 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+    <circle cx="650" cy="388" r="15" fill="#8B5E3C"/>
+    <rect x="628" y="352" width="46" height="58" rx="5" fill="#F4F1E9" stroke="#C9C2AE" stroke-width="2"/>
+    <rect x="641" y="347" width="20" height="10" rx="3" fill="#C9C2AE"/>
+    <line x1="636" y1="368" x2="666" y2="368" stroke="#B9AE94" stroke-width="3" stroke-linecap="round"/>
+    <line x1="636" y1="380" x2="666" y2="380" stroke="#B9AE94" stroke-width="3" stroke-linecap="round"/>
+    <line x1="636" y1="392" x2="656" y2="392" stroke="#B9AE94" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- legs -->
+    <rect x="531" y="398" width="26" height="66" rx="10" fill="#B7C6D1"/>
+    <rect x="569" y="398" width="26" height="66" rx="10" fill="#B7C6D1"/>
+    <ellipse cx="544" cy="466" rx="17" ry="9" fill="#4A3B2E"/>
+    <ellipse cx="584" cy="466" rx="17" ry="9" fill="#4A3B2E"/>
+
+    <!-- coat body -->
+    <rect x="510" y="288" width="120" height="112" rx="34" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+    <path d="M570,288 L570,340 L546,300 Z" fill="#F5F7F9"/>
+    <path d="M570,288 L570,340 L594,300 Z" fill="#EDF0F4"/>
+    <circle cx="570" cy="330" r="3.2" fill="#BFC7D1"/>
+    <circle cx="570" cy="352" r="3.2" fill="#BFC7D1"/>
+    <circle cx="570" cy="374" r="3.2" fill="#BFC7D1"/>
+    <rect x="526" y="308" width="20" height="15" rx="2" fill="none" stroke="#D9DEE6" stroke-width="2"/>
+    <line x1="534" y1="303" x2="529" y2="316" stroke="#8B5E3C" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- forward-arm poses (crossfade): relaxed / reaching-for-handshake / raised-for-joy -->
+    <g class="side-arm">
+      <path d="M517,296 C488,312 478,340 487,378 C489,390 512,392 514,380 C508,356 514,332 532,312 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="510" cy="384" r="16" fill="#8B5E3C"/>
+    </g>
+    <g class="reach-arm">
+      <path d="M517,296 C470,300 428,315 402,338 C394,346 408,362 417,356 C440,338 472,322 522,316 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="404" cy="347" r="18" fill="#8B5E3C" stroke="#77502F" stroke-width="1.5"/>
+    </g>
+    <g class="raise-arm">
+      <path d="M517,298 C500,270 500,220 510,175 C512,165 532,168 532,180 C524,222 524,264 538,290 Z" fill="#FFFFFF" stroke="#D9DEE6" stroke-width="2"/>
+      <circle cx="516" cy="168" r="17" fill="#8B5E3C"/>
+    </g>
+
+    <!-- head -->
+    <circle cx="524" cy="187" r="27" fill="#8B5E3C"/>
+    <circle cx="616" cy="187" r="27" fill="#8B5E3C"/>
+    <circle cx="524" cy="187" r="14" fill="#C9A27A"/>
+    <circle cx="616" cy="187" r="14" fill="#C9A27A"/>
+    <circle cx="570" cy="235" r="58" fill="#8B5E3C"/>
+    <path d="M555,290 C562,300 578,300 585,290 L580,304 L560,304 Z" fill="#FFF8EE"/>
+    <ellipse cx="570" cy="257" rx="39" ry="30" fill="#D9B98E"/>
+    <ellipse cx="570" cy="241" rx="8" ry="7" fill="#2E2117"/>
+    <path d="M570,245 L570,259" stroke="#2E2117" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M550,266 C558,274 582,274 590,266" fill="none" stroke="#2E2117" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="547" cy="226" rx="12" ry="14" fill="#FFFFFF"/>
+    <ellipse cx="593" cy="226" rx="12" ry="14" fill="#FFFFFF"/>
+    <circle cx="549" cy="229" r="5.5" fill="#2B2118"/>
+    <circle cx="595" cy="229" r="5.5" fill="#2B2118"/>
+    <circle cx="547" cy="225" r="1.6" fill="#FFFFFF"/>
+    <circle cx="593" cy="225" r="1.6" fill="#FFFFFF"/>
+    <circle cx="547" cy="226" r="21" fill="none" stroke="#3B3B3B" stroke-width="3.5"/>
+    <circle cx="593" cy="226" r="21" fill="none" stroke="#3B3B3B" stroke-width="3.5"/>
+    <line x1="568" y1="224" x2="572" y2="224" stroke="#3B3B3B" stroke-width="3.5"/>
+    <line x1="526" y1="219" x2="514" y2="211" stroke="#3B3B3B" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="614" y1="219" x2="626" y2="211" stroke="#3B3B3B" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- joyful face overlay (fades in only during the jump) -->
+    <g class="raise-arm">
+      <ellipse cx="547" cy="226" rx="13" ry="15" fill="#8B5E3C"/>
+      <ellipse cx="593" cy="226" rx="13" ry="15" fill="#8B5E3C"/>
+      <path d="M537,229 Q547,213 557,229" stroke="#2E2117" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M583,229 Q593,213 603,229" stroke="#2E2117" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M552,266 C560,280 580,280 588,266" fill="none" stroke="#2E2117" stroke-width="5" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- handshake sparkles (only while hands are clasped) -->
+  <g class="reach-arm" fill="#F5C244">
+    <path d="M398,264 l5,14 14,5 -14,5 -5,14 -5,-14 -14,-5 14,-5 Z"/>
+    <path d="M442,300 l3.5,9 9,3.5 -9,3.5 -3.5,9 -3.5,-9 -9,-3.5 9,-3.5 Z"/>
+    <path d="M356,300 l3.5,9 9,3.5 -9,3.5 -3.5,9 -3.5,-9 -9,-3.5 9,-3.5 Z"/>
+  </g>
+
+  <!-- celebration sparkles (only during the jump-for-joy) -->
+  <g class="raise-arm" fill="#F5C244">
+    <path d="M150,110 l5,14 14,5 -14,5 -5,14 -5,-14 -14,-5 14,-5 Z"/>
+    <path d="M650,110 l5,14 14,5 -14,5 -5,14 -5,-14 -14,-5 14,-5 Z"/>
+    <path d="M330,150 l4,11 11,4 -11,4 -4,11 -4,-11 -11,-4 11,-4 Z"/>
+    <path d="M470,150 l4,11 11,4 -11,4 -4,11 -4,-11 -11,-4 11,-4 Z"/>
+    <path d="M400,90 l4,11 11,4 -11,4 -4,11 -4,-11 -11,-4 11,-4 Z" fill="#F58C6E"/>
+  </g>
+</svg>
